@@ -1,0 +1,24 @@
+{
+  "name": "cogumi",
+  "id": "cogumi",
+  "owner": {
+    "name": "Cogumi"
+  },
+  "metadata": {
+    "description": "Engineering rules that make AI coding agents write less brittle code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "cogumi-rules",
+      "source": "./",
+      "description": "Karpathy's four principles plus Design for Change, Test the Product, Read Before You Write and Prove It Before Saying Done",
+      "version": "1.0.0",
+      "author": {
+        "name": "Cogumi"
+      },
+      "keywords": ["guidelines", "best-practices", "coding", "testing", "refactoring"],
+      "category": "workflow"
+    }
+  ]
+}

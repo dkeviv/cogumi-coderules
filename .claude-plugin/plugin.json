@@ -1,0 +1,11 @@
+{
+  "name": "cogumi-rules",
+  "description": "Cogumi engineering rules for AI coding agents: Karpathy's four principles plus design for change, flow-based testing, read before write and proof before done",
+  "version": "1.0.0",
+  "author": {
+    "name": "Cogumi"
+  },
+  "license": "MIT",
+  "keywords": ["guidelines", "best-practices", "coding", "testing", "refactoring"],
+  "skills": ["./skills/cogumi-rules"]
+}
