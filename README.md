@@ -38,7 +38,7 @@ The rules stay generic. Anything that differs per repository lives in one small 
 **Claude Code (plugin, recommended)**
 
 ```
-/plugin marketplace add dkeviv/cogumi-rules
+/plugin marketplace add dkeviv/cogumi-coderules
 /plugin install cogumi-rules@cogumi
 ```
 
@@ -46,7 +46,7 @@ The plugin includes a `SessionStart` hook that places the rules, and `cogumi-pro
 
 **Claude Code (per repository)**
 
-Copy [`CLAUDE.md`](CLAUDE.md) into your project, or add this line to your existing `CLAUDE.md`:
+Copy [`CLAUDE.md`](CLAUDE.md) into your project. To keep it separate from your own instructions, save it as `cogumi-rules.md` and add this line to your existing `CLAUDE.md`:
 
 ```
 @cogumi-rules.md
@@ -73,7 +73,7 @@ scripts/build.sh    # regenerates CLAUDE.md, AGENTS.md, the skill and the Cursor
 scripts/check.sh    # fails if any generated file is out of sync
 ```
 
-Run `scripts/check.sh` in CI so the formats never drift.
+The workflow in [`.github/workflows/check.yml`](.github/workflows/check.yml) runs `scripts/check.sh` on every push and pull request, so the formats never drift.
 
 ## Credits
 
