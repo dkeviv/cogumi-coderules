@@ -2,7 +2,7 @@
 
 Engineering rules for AI coding agents. They build on Andrej Karpathy's four principles and add the practices that reduce refactoring and bugs. The rules are standing constraints loaded into the agent's context. There is nothing to invoke.
 
-Works with Claude Code, Codex and ChatGPT, and Cursor. One source file generates every format.
+Works with Claude Code, Codex and ChatGPT, Cursor, and DeepSeek Harness. One source file generates every format.
 
 ## The Problems
 
@@ -59,6 +59,27 @@ Codex reads `AGENTS.md` at the repository root. Copy [`AGENTS.md`](AGENTS.md) th
 **Cursor**
 
 Copy [`.cursor/rules/cogumi-rules.mdc`](.cursor/rules/cogumi-rules.mdc) into your project's `.cursor/rules/`. It is set to `alwaysApply: true`. Cursor also reads `AGENTS.md`, so that file works as well.
+
+**DeepSeek Harness**
+
+DSH has no Claude plugin loader, so install the two parts directly. The skill:
+
+```
+cp -R skills/cogumi-rules ~/.dsh/skills/
+```
+
+That exposes the rules as a skill in every session. To place them in context at the start of every session as well, bridge the `SessionStart` hook by adding this entry to your profile's patch layer, `~/.dsh/profiles/<profile>/cordis.patch.yml`, then restart DSH:
+
+```yaml
+- insert:
+    - id: hooks-cogumi-rules
+      name: "@deepseek-ai/dsh-hooks-claude-code"
+      config:
+        configPath: "/path/to/cogumi-coderules/hooks/hooks.json"
+        pluginRoot: "/path/to/cogumi-coderules"
+```
+
+DSH runs [`hooks/hooks.json`](hooks/hooks.json) unchanged: it substitutes `${CLAUDE_PLUGIN_ROOT}`, injects the hook's stdout as session context, and matches the `startup` and `resume` sources. DSH also reads `AGENTS.md` at the repository root, so that file works too.
 
 ## How it works
 
