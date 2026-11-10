@@ -39,7 +39,7 @@ The rules stay generic. Anything that differs per repository lives in one small 
 
 ```
 /plugin marketplace add dkeviv/cogumi-coderules
-/plugin install cogumi-rules@cogumi
+/plugin install cogumi-rules@cogumi-coderules
 ```
 
 The plugin includes a `SessionStart` hook that places the rules, and `cogumi-project.md` if present, in context at the start of every session, so they do not depend on a skill description matching. It also exposes the same text as a skill.
